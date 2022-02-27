@@ -1,22 +1,25 @@
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import LandingPage from "./screens/LandingPage/LandingPage";
+import MyNotes from "./MyNotes/MyNotes";
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Header />
+        
+          <Routes>
+            <Route exact path='/' element={<LandingPage />} />
+            <Route  path='/mynotes' element={<MyNotes />} />
+          </Routes>
+        
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
 

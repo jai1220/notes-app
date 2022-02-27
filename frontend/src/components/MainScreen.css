@@ -1,0 +1,8 @@
+.mainback{
+    min-height: 99vh;
+    display: flex;
+}
+
+.page{
+    width: 100%;
+}

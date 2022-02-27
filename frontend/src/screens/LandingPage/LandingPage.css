@@ -1,0 +1,17 @@
+.main{
+    min-height: 100vh;
+}
+
+.intro-text{
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.button-container{
+    margin:0 auto;
+}
+
+.login-button{
+    margin-right: 10px;
+}
