@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Badge, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import MainScreen from '../components/MainScreen';
+import axios from 'axios';
 
-import notes from '../notes';
+//import notes from '../notes';
 
 const MyNotes = () => {
+
+  const[notes, setNotes] = useState([]);
 
   const deleteHandler = (id) => {
    if(window.confirm("Are you sure to delete")){
@@ -13,11 +16,21 @@ const MyNotes = () => {
    } 
   }
 
+  const fetchNotes = async () => {
+    const {data} = await axios.get('/api/notes/'); //Destructuring data from response
+    setNotes(data);
+  }
+
+  useEffect(()=> {
+    fetchNotes();
+  }, [])
+
   return <MainScreen title="Welcome back Jai">
-    <Link to='createnote'>
+    <Link  to='createnote'>
       <Button size='lg'>
         Create New Note
       </Button>
+    </Link>
 
       {
         notes.map(note => (
@@ -40,7 +53,6 @@ const MyNotes = () => {
           </Card>
         ))
       }
-    </Link>
   </MainScreen>
 }
 
